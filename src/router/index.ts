@@ -11,13 +11,36 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/category',
+    name: 'category',
+    component: () => import('../views/Category.vue'),
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('../views/Cart.vue'),
+    meta: {
+      needLogin: 1
+    }
+  },
+  {
+    path: '/mine',
+    name: 'mine',
+    component: () => import('../views/Mine.vue'),
+    meta: {
+      needLogin: 1
+    }
+  },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('../views/Product.vue')
+  },
 ]
 
 const router = new VueRouter({
@@ -25,5 +48,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.needLogin === 1 && to.name !== 'login') {
+//     console.log(to.name)
+//     next('/login')
+//   } else {
+//     next()
+//   }
+// })
 
 export default router
