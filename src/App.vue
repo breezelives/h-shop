@@ -11,28 +11,30 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
-    <router-view />
-    <v-bottom-navigation v-show="showNav" v-model="bottomNav" app grow color="primary">
-      <v-btn value="home">
+    <!-- <transition name="fade"> -->
+      <router-view />
+    <!-- </transition> -->
+    <v-bottom-navigation app grow color="primary">
+      <router-link to="/home" is="v-btn">
         <span>首页</span>
         <v-icon>mdi-home-outline</v-icon>
-      </v-btn>
-      <v-btn value="category">
+      </router-link>
+      <router-link to="/category" is="v-btn">
         <span>分类</span>
         <v-icon>mdi-file-document-box-search-outline</v-icon>
-      </v-btn>
+      </router-link>
       <!-- <v-btn value="find">
         <span>发现</span>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>-->
-      <v-btn value="cart">
+      <router-link to="/cart" is="v-btn">
         <span>购物车</span>
         <v-icon>mdi-cart-outline</v-icon>
-      </v-btn>
-      <v-btn value="mine">
+      </router-link>
+      <router-link to="/mine" is="v-btn">
         <span>我的</span>
         <v-icon>mdi-account</v-icon>
-      </v-btn>
+      </router-link>
     </v-bottom-navigation>
   </v-app>
 </template>
@@ -47,34 +49,33 @@ export default {
   },
   data() {
     return {
-      // showNav: true
       menus: ["home", "category", "cart", "mine"]
     };
   },
   computed: {
     showNav() {
-      return this.checkShowNav(this.$route.name);
-    },
-    bottomNav: {
-      get() {
-        return this.$route.name;
-      },
-      set(v) {
-        if(this.menus.includes(v)) {
-          this.$router.push({ name: v });
-        }
-      }
+      return this.menus.includes(this.$route.name);
     }
-  },
+    // bottomNav: {
+    //   get() {
+    //     return this.$route.name;
+    //   },
+    //   set(v) {
+    //     // if(this.menus.includes(v)) {
+    //     this.$router.push({ name: v });
+    //     // }
+    //   }
+    // }
+  }
   // watch: {
   //   $route(v) {
   //     this.showNav = this.checkShowNav(v.name);
   //   }
   // },
-  methods: {
-    checkShowNav(routeName) {
-      return ["home", "category", "cart", "mine"].includes(routeName);
-    }
-  }
+  // methods: {
+  //   checkShowNav(routeName) {
+  //     return ["home", "category", "cart", "mine"].includes(routeName);
+  //   }
+  // }
 };
 </script>

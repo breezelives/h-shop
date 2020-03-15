@@ -1,49 +1,49 @@
 <template>
   <v-content>
-    <v-carousel height="200" class="pa-3" cycle show-arrows-on-hover hide-delimiters>
-      <v-carousel-item v-for="(banner, i) in banners" :key="i" :src="banner.src"></v-carousel-item>
+    <v-carousel
+      height="200"
+      class="pa-3"
+      cycle
+      show-arrows-on-hover
+      hide-delimiters
+    >
+      <v-carousel-item
+        v-for="(banner, i) in banners"
+        :key="i"
+        :src="banner.src"
+      ></v-carousel-item>
     </v-carousel>
+
     <v-row class="px-3">
-      <v-col cols="3" v-for="(category, i) in categories" :key="i" class="text-center">
+      <v-col
+        cols="3"
+        v-for="(category, i) in categories"
+        :key="i"
+        class="text-center"
+      >
         <img :src="category.src" height="35" />
-        <div>{{category.name}}</div>
+        <div>{{ category.name }}</div>
       </v-col>
     </v-row>
-    <!-- <v-row align="center" justify="center">
+
+    <section class="column-wrap px-3">
+      <v-card
+        v-for="(item, i) in goodsList"
+        :key="i"
+        class="mb-2 column-item"
+        @click="goto(`/product/${item.id}`)"
+      >
         <v-img
-          src="https://picsum.photos/id/11/500/300"
-          lazy-src="https://picsum.photos/id/11/10/6"
-          aspect-ratio="1"
-          class="grey lighten-2"
-          max-width="500"
-          max-height="300"
+          class="white--text align-end"
+          width="100%"
+          :src="item.image"
         ></v-img>
-    </v-row>-->
-    <v-row dense class="px-3">
-      <v-col cols="6">
-        <v-card v-for="(item,i) in goodsList" :key="i" class="mb-2">
-          <v-img class="white--text align-end" width="100%" :src="item.image"></v-img>
-          <v-card-subtitle class="pb-0">{{item.title}}</v-card-subtitle>
-          <v-card-text class="text--accent-2">
-            <div>￥{{item.price}}</div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col cols="6">
-        <v-card
-          v-for="(item,i) in reversedGoodsList"
-          :key="i"
-          class="mb-2"
-          @click="goto(`/product/${item.id}`)"
-        >
-          <v-img class="white--text align-end" width="100%" :src="item.image"></v-img>
-          <v-card-subtitle class="pb-0">{{item.title}}</v-card-subtitle>
-          <v-card-text class="text--accent-2">
-            <div>￥{{item.price}}</div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+        <v-card-subtitle class="pb-0">{{ item.title }}</v-card-subtitle>
+        <v-card-text class="text--accent-2">
+          <div>￥{{ item.price }}</div>
+        </v-card-text>
+      </v-card>
+    </section>
   </v-content>
 </template>
 

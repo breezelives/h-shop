@@ -1,3 +1,10 @@
 .v-bottom-navigation .v-btn {
   height: inherit !important;
 }
+
+.column-wrap {
+  column-count: 2;
+  .column-item {
+    break-inside: avoid;
+  }
+}

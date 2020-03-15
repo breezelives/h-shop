@@ -1,9 +1,13 @@
 <template>
-  <v-content>login</v-content>
+  <v-dialog :value="true" fullscreen transition="dialog-bottom-transition">
+    <v-card tile="">
+      login
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
-import api from "../api/index";
+// import api from "../api/index";
 
 export default {
   name: "login",

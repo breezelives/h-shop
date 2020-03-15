@@ -4,10 +4,14 @@
 
 <script>
 export default {
+name: 'category',
+data() {
+  return {
 
+  }
+},
+created() {
+  console.log(this.$route.query)
+}
 }
 </script>
-
-<style>
-
-</style>
